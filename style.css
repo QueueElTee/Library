@@ -13,11 +13,19 @@ body{
 
 .books{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
     grid-gap: 1rem;
+    max-width: 90%;
+    margin: 0 auto;
 }
 
 .book-card{
     background-color: #00112c;
     color: #fff;
+    border-radius: 15px;
+    padding: 1.5rem 1rem;
+}
+
+.book-card *:not(:last-child){
+    margin-bottom: 0.5rem;
 }

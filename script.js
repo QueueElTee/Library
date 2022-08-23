@@ -34,11 +34,21 @@ const displayBooks = () => {
         let author = document.createElement('p');
         let noOfPages = document.createElement('p');
         let read = document.createElement('p');
+        let readStatus = document.createElement('div');
+        readStatus.style.padding = '0.7rem';
+        readStatus.style.textAlign = 'center';
         title.textContent = `Title: ${myLibrary[i].title}`;
         author.textContent = `Author: ${myLibrary[i].author}`;
         noOfPages.textContent = `No Of Pages: ${myLibrary[i].pages}`;
         read.textContent = `Read: ${myLibrary[i].read}`;
-        book.append(title, author, noOfPages, read);
+        if(myLibrary[i].read == true){
+            readStatus.style.backgroundColor = 'green';
+            readStatus.textContent = 'Read';
+        } else {
+            readStatus.style.backgroundColor = 'red';
+            readStatus.textContent = 'Not Read Yet';
+        }
+        book.append(title, author, noOfPages, readStatus);
         booksContainer.appendChild(book);
     }
 }
