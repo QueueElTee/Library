@@ -11,6 +11,12 @@ body{
     background-color: #ffc845;
 }
 
+.books{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+}
+
 .book-card{
     background-color: #00112c;
     color: #fff;
