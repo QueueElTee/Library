@@ -8,4 +8,10 @@
 
 body{
     font-family: 'Roboto', sans-serif;
+    background-color: #ffc845;
+}
+
+.book-card{
+    background-color: #00112c;
+    color: #fff;
 }
