@@ -35,12 +35,22 @@ const displayBooks = () => {
         let noOfPages = document.createElement('p');
         let read = document.createElement('p');
         let readStatus = document.createElement('div');
-        readStatus.style.padding = '0.7rem';
-        readStatus.style.textAlign = 'center';
+        let iconContainer = document.createElement('div');
+        let deleteIcon = document.createElement('i');
+
         title.textContent = `Title: ${myLibrary[i].title}`;
         author.textContent = `Author: ${myLibrary[i].author}`;
         noOfPages.textContent = `No Of Pages: ${myLibrary[i].pages}`;
         read.textContent = `Read: ${myLibrary[i].read}`;
+        readStatus.style.padding = '0.7rem';
+        readStatus.style.textAlign = 'center';
+        deleteIcon.classList.add('fa-solid');
+        deleteIcon.classList.add('fa-trash-can');
+        deleteIcon.classList.add('fa-align-right');
+        deleteIcon.style.color = 'red';
+        iconContainer.style.textAlign = 'right';
+        iconContainer.appendChild(deleteIcon);
+
         if(myLibrary[i].read == true){
             readStatus.style.backgroundColor = 'green';
             readStatus.textContent = 'Read';
@@ -48,7 +58,7 @@ const displayBooks = () => {
             readStatus.style.backgroundColor = 'red';
             readStatus.textContent = 'Not Read Yet';
         }
-        book.append(title, author, noOfPages, readStatus);
+        book.append(title, author, noOfPages, readStatus, iconContainer);
         booksContainer.appendChild(book);
     }
 }
