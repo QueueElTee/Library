@@ -54,7 +54,7 @@ const displayBooks = () => {
         if(myLibrary[i].read == true){
             readStatus.style.backgroundColor = 'green';
             readStatus.textContent = 'Read';
-        } else {
+        } else if(myLibrary[i].read == false){
             readStatus.style.backgroundColor = 'red';
             readStatus.textContent = 'Not Read Yet';
         }
