@@ -70,7 +70,7 @@ displayBooks();
 
 
 // TODOS
-// TODO 1: Style the form
+// TODO 1 Add form validation
 // TODO 2: Link the form display to the 'add new book' button
 // TODO 3: Link the form values to the book objects
 // TODO 4: Ensure that the readStatus toggle works
