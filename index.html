@@ -11,33 +11,51 @@
 </head>
 <body>
     <main>
-        <h1>Library</h1>
-        <h2>Books: <span id="book-count"></span></h2>
+        <section class="main-heading">
+            <h1>Library</h1>
+            <h2>Books: <span id="book-count"></span></h2>
+        </section>
         <div class="add-new-book">
             <h3>Add A New Book</h3>
-            <i class="fa-solid fa-circle-plus"></i>
+            <div class="div"><i class="fa-solid fa-circle-plus"></i></div>
         </div>
         <section class="books">
             
         </section>
         <form action="#" id="book-form">
-            <h4>New Book</h4>
-            <label for="title">Title</label>
-            <input type="text" placeholder="Title" name="title" id="title">
+            <div class="form-heading">
+                <div class="close"><i class="fa-solid fa-xmark"></i></div>
+                <h4>New Book</h4>
+            </div>
 
-            <label for="author">Author</label>
-            <input type="text" placeholder="Author" name="author" id="author">
+            <div class="block-inputs">
+                <div>
+                    <label for="title">Title</label>
+                    <input type="text" placeholder="Title" name="title" id="title">
+                </div>
+    
+                <div>
+                    <label for="author">Author</label>
+                    <input type="text" placeholder="Author" name="author" id="author">
+                </div>
+    
+                <div>
+                    <label for="pages">No Of Pages</label>
+                    <input type="number" placeholder="Pages" name="pages" id="pages">
+                </div>
+            </div>
 
-            <label for="pages">No Of Pages</label>
-            <input type="number" placeholder="Pages" name="pages" id="pages">
+            <div class="radio-inputs">
+                <p>Have You Read This Book?</p>
+                <input type="radio" name="options" value="Yes" id="yes">
+                <label for="yes">Yes</label><br>
+                <input type="radio" name="options" value="No" id="no">
+                <label for="no">No</label><br>
+            </div>
 
-            <p>Have You Read This Book?</p>
-            <input type="radio" name="options" value="Yes" id="yes">
-            <label for="yes">Yes</label><br>
-            <input type="radio" name="options" value="No" id="no">
-            <label for="no">No</label><br>
-
-            <input type="submit" value="Add Book">
+            <div class="submit">
+                <input type="submit" value="Add Book">
+            </div>
         </form>
     </main>
     <!-- <i class="fa-solid fa-circle-plus"></i>

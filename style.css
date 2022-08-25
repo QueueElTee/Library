@@ -11,6 +11,49 @@ body{
     background-color: #ffc845;
 }
 
+main{
+    padding: 2rem 0;
+}
+
+.main-heading{
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.main-heading h1{
+    text-align: center;
+    font-size: 3rem;
+}
+
+.main-heading h2{
+    font-size: 2rem;
+    margin-top: 0.25rem;
+}
+
+.add-new-book{
+    max-width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.25rem;
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+}
+
+.add-new-book *{
+    text-align: center;
+}
+
+.add-new-book h3{
+    font-size: 1.7rem;
+}
+
+.add-new-book div i{
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+
 .books{
     display: grid;
     grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
@@ -28,4 +71,74 @@ body{
 
 .book-card *:not(:last-child){
     margin-bottom: 0.8rem;
+}
+
+form{
+    background-color: #19975d;
+    width: 40%;
+    margin: 0 auto;
+    color: #fff;
+    padding: 1.5rem 2.5rem;
+    border-radius: 10px;
+}
+
+form .form-heading .close{
+    text-align: right;
+}
+
+form .form-heading .close i{
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+
+form .form-heading h4{
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+form .block-inputs *{
+    display: flex;
+    flex-direction: column;
+}
+
+form .block-inputs div{
+    margin-bottom: 0.8rem;
+}
+
+form .block-inputs div input{
+    padding: 0.5rem;
+    border: none;
+    border-style: none;
+    outline: none;
+}
+
+form .radio-inputs input{
+    cursor: pointer;
+}
+
+form .block-inputs div label, 
+form .block-inputs div input, 
+form .radio-inputs p,
+form .radio-inputs label{
+    font-size: 0.95rem;
+}
+
+form .submit{
+    margin-top: 1rem;
+}
+
+form .submit input{
+    background-color: #00112c;
+    outline: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #00112c;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    transition: transform 0.2s ease-in;
+}
+
+form .submit input:hover{
+    transform: scale(1.1);
 }

@@ -44,10 +44,12 @@ const displayBooks = () => {
         read.textContent = `Read: ${myLibrary[i].read}`;
         readStatus.style.padding = '0.7rem';
         readStatus.style.textAlign = 'center';
+        readStatus.style.cursor = 'pointer';
         deleteIcon.classList.add('fa-solid');
         deleteIcon.classList.add('fa-trash-can');
         deleteIcon.classList.add('fa-align-right');
         deleteIcon.style.color = 'red';
+        deleteIcon.style.cursor = 'pointer';
         iconContainer.style.textAlign = 'right';
         iconContainer.appendChild(deleteIcon);
 
