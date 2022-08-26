@@ -74,12 +74,20 @@ main{
 }
 
 form{
+    display: none;
     background-color: #19975d;
     width: 40%;
     margin: 0 auto;
     color: #fff;
     padding: 1.5rem 2.5rem;
     border-radius: 10px;
+    position: absolute;
+    top: 11rem;
+    /* text-align: center; */
+    left: 0;
+    right: 0;
+    z-index: 1;
+    margin: 0 auto;
 }
 
 form .form-heading .close{

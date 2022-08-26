@@ -1,6 +1,9 @@
 let myLibrary = [];
 let booksContainer = document.querySelector('.books');
 let bookCount = document.querySelector('#book-count');
+let closeIcon = document.querySelector('.close i');
+let bookForm = document.querySelector('#book-form');
+let addIcon = document.querySelector('.add-new-book div i');
 
 function Book(title, author, pages, read){
     this.title = title;
@@ -64,6 +67,14 @@ const displayBooks = () => {
         booksContainer.appendChild(book);
     }
 }
+
+addIcon.addEventListener('click', () => {
+    bookForm.style.display = 'block';
+});
+
+closeIcon.addEventListener('click', () => {
+    bookForm.style.display = 'none';
+});
 
 displayBooks();
 
