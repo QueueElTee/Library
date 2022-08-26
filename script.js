@@ -118,4 +118,5 @@ displayBooks();
 // TODOS
 // TODO 1: Ensure that the readStatus toggle works
 // TODO 2: Ensure that the delete icon works
-// TODO 3: Add local storage
+// TODO 3: Add media queries
+// TODO 4: Add local storage
