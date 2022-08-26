@@ -75,8 +75,17 @@ const clearBooks = () => {
     books.forEach(book => booksContainer.removeChild(book));
 }
 
+const clearInputs = () => {
+    document.querySelector('input#title').value = '';
+    document.querySelector('input#author').value = '';
+    document.querySelector('input#pages').value = '';
+    document.querySelector('input#yes').checked = false;
+    document.querySelector('input#no').checked = false;
+}
+
 
 addIcon.addEventListener('click', () => {
+    clearInputs();
     bookForm.style.display = 'block';
 });
 
@@ -95,9 +104,11 @@ bookForm.addEventListener('submit', (e) => {
 
     clearBooks();
     displayBooks();
+    bookCount.textContent = `${myLibrary.length}`;
 });
 
 closeIcon.addEventListener('click', () => {
+    clearInputs();
     bookForm.style.display = 'none';
 });
 
