@@ -31,7 +31,7 @@ myLibrary.push(book1, book2, book3, book4, book5, book6, book7);
 bookCount.textContent = `${myLibrary.length}`;
 
 const displayBooks = () => {
-    for(let i = 0; i < myLibrary.length; i++){
+    for(let i = myLibrary.length - 1; i >= 0; i--){
         let book = document.createElement('div');
         book.classList.add('book-card');
         let title = document.createElement('p');
