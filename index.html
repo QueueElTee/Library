@@ -22,7 +22,7 @@
         <!-- <section class="books">
             
         </section> -->
-        <form action="#" id="book-form">
+        <form id="book-form">
             <div class="form-heading">
                 <div class="close"><i class="fa-solid fa-xmark"></i></div>
                 <h4>New Book</h4>
@@ -41,7 +41,7 @@
     
                 <div>
                     <label for="pages">No Of Pages</label>
-                    <input type="number" placeholder="Pages" name="pages" id="pages" required>
+                    <input type="number" placeholder="Pages" name="pages" id="pages" required min="1">
                 </div>
             </div>
 
@@ -54,7 +54,7 @@
             </div>
 
             <div class="submit">
-                <input type="submit" value="Add Book">
+                <input type="submit" value="Add Book" id="submit">
             </div>
         </form>
 

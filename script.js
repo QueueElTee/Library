@@ -4,6 +4,7 @@ let bookCount = document.querySelector('#book-count');
 let closeIcon = document.querySelector('.close i');
 let bookForm = document.querySelector('#book-form');
 let addIcon = document.querySelector('.add-new-book div i');
+let submit = document.querySelector('#submit');
 
 function Book(title, author, pages, read){
     this.title = title;
@@ -68,8 +69,32 @@ const displayBooks = () => {
     }
 }
 
+
+const clearBooks = () => {
+    let books = document.querySelectorAll('.books .book-card');
+    books.forEach(book => booksContainer.removeChild(book));
+}
+
+
 addIcon.addEventListener('click', () => {
     bookForm.style.display = 'block';
+});
+
+bookForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    let title = document.querySelector('input#title').value;
+    let author = document.querySelector('input#author').value;
+    let pages = document.querySelector('input#pages').value;
+    let option = document.querySelector('input[name="options"]:checked').value;
+    let read = (option == 'Yes') ? true : false;
+
+    let book = new Book(title, author, pages, read);
+    addBookToLibrary(book);
+    bookForm.style.display = 'none';
+
+    clearBooks();
+    displayBooks();
 });
 
 closeIcon.addEventListener('click', () => {
@@ -79,10 +104,7 @@ closeIcon.addEventListener('click', () => {
 displayBooks();
 
 
-
 // TODOS
-// TODO 1 Add form validation
-// TODO 2: Link the form display to the 'add new book' button
-// TODO 3: Link the form values to the book objects
-// TODO 4: Ensure that the readStatus toggle works
-// TODO 5: Ensure that the delete icon works
+// TODO 1: Ensure that the readStatus toggle works
+// TODO 2: Ensure that the delete icon works
+// TODO 3: Add local storage
