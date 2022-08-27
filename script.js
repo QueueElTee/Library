@@ -31,7 +31,7 @@ myLibrary.push(book1, book2, book3, book4, book5, book6, book7);
 bookCount.textContent = `${myLibrary.length}`;
 
 const displayBooks = () => {
-    for(let i = myLibrary.length - 1; i >= 0; i--){
+    for(let i = 0; i < myLibrary.length; i++){
         let book = document.createElement('div');
         book.classList.add('book-card');
         let title = document.createElement('p');
@@ -114,9 +114,27 @@ closeIcon.addEventListener('click', () => {
 
 displayBooks();
 
+const setDataAttr = () => {
+    let books =  document.querySelectorAll('.books .book-card');
+    for(let i = 0; i < books.length; i++){
+        books[i].setAttribute('data-book', `${i}`);
+    }
+}
+
+let deleteBooks = document.querySelectorAll('.books .book-card div i');
+deleteBooks.forEach(book => book.addEventListener('click', () => {
+    let bookCardIndex = book.parentNode.parentNode.getAttribute('data-book');
+
+    myLibrary.splice(parseInt(bookCardIndex), 1);
+    booksContainer.removeChild(book.parentNode.parentNode);
+    bookCount.textContent = `${myLibrary.length}`;
+    console.log(bookCardIndex);
+    console.table(myLibrary);
+    setDataAttr();
+}));
+
 
 // TODOS
 // TODO 1: Ensure that the readStatus toggle works
-// TODO 2: Ensure that the delete icon works
-// TODO 3: Add media queries
-// TODO 4: Add local storage
+// TODO 2: Add media queries
+// TODO 3: Add local storage
