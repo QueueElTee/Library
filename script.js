@@ -142,8 +142,9 @@ closeIcon.addEventListener('click', () => {
 });
 
 
-
-displayBooks();
+if(myLibrary.length > 0){
+    displayBooks();
+};
 
 
 // This is the event listener that listens for a click event on the trash icon of any of the books.
