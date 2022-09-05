@@ -2,17 +2,13 @@
 let myLibrary = [];
 // Parent container for the books
 let booksContainer = document.querySelector('.books');
-// Stores the length of th library array
+// Stores the length of the library array
 let bookCount = document.querySelector('#book-count');
 
 let closeIcon = document.querySelector('.close i');
 let bookForm = document.querySelector('#book-form');
 let addIcon = document.querySelector('.add-new-book div i');
 let submit = document.querySelector('#submit');
-
-// Will store the trash icon element in a nodelist
-// Initialized to an empty array at first, this will be modified the the 'displayBooks' function.
-let deleteBooks = [];
 
 // Book object constructor
 function Book(title, author, pages, read){
@@ -22,7 +18,7 @@ function Book(title, author, pages, read){
     this.read = read;
 };
 
-// Adds a book object tp the library
+// Adds a book object to the library
 const addBookToLibrary = (book) => {
     myLibrary.push(book)
 };
@@ -97,8 +93,6 @@ const displayBooks = () => {
         booksContainer.appendChild(book);
     }
     setDataAttr();
-    // The 'deleteBooks' node list holds the delete icons for all of the books.
-    deleteBooks = document.querySelectorAll('.books .book-card div i');
 }
 
 
@@ -116,6 +110,7 @@ addIcon.addEventListener('click', () => {
     bookForm.style.display = 'block';
 });
 
+
 bookForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -132,9 +127,8 @@ bookForm.addEventListener('submit', (e) => {
     displayBooks();
     bookCount.textContent = `${myLibrary.length}`;
     setDataAttr();
-    console.table(myLibrary);
-    console.log(deleteBooks);
 });
+
 
 closeIcon.addEventListener('click', () => {
     clearInputs();
@@ -142,29 +136,25 @@ closeIcon.addEventListener('click', () => {
 });
 
 
-if(myLibrary.length > 0){
-    displayBooks();
+const deleteCard = (el) => {
+    if(el.classList.contains('fa-trash-can')){
+        el.parentElement.parentElement.remove();
+        let bookCardIndex = el.parentNode.parentNode.getAttribute('data-book');
+        myLibrary.splice(parseInt(bookCardIndex), 1);
+        bookCount.textContent = `${myLibrary.length}`;
+        setDataAttr();
+    };
 };
 
 
-// This is the event listener that listens for a click event on the trash icon of any of the books.
-deleteBooks.forEach(trashIcon => trashIcon.addEventListener('click', () => {
-    // Stores the data attribute of the clicked element.
-    let bookCardIndex = trashIcon.parentNode.parentNode.getAttribute('data-book');
+booksContainer.addEventListener('click', (e) => {
+    deleteCard(e.target);
+});
 
-    // Removes the element from the array.
-    myLibrary.splice(parseInt(bookCardIndex), 1);
-    bookCount.textContent = `${myLibrary.length}`;
 
-    // A call to the 'display book' method
+if(myLibrary.length > 0){
     displayBooks();
-
-    // trashIcon.parentNode.parentNode.remove();
-    // setDataAttr();
-    console.log(bookCardIndex);
-    console.table(myLibrary);
-    console.log(deleteBooks);
-}));
+};
 
 
 // TODOS
