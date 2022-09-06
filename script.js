@@ -174,5 +174,4 @@ if(myLibrary.length > 0){
 
 
 // TODOS
-// TODO 1: Add media queries
-// TODO 2: Add local storage
+// TODO 1: Add local storage
