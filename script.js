@@ -75,6 +75,7 @@ const displayBooks = () => {
         readStatus.style.padding = '0.7rem';
         readStatus.style.textAlign = 'center';
         readStatus.style.cursor = 'pointer';
+        readStatus.classList.add('read');
         deleteIcon.classList.add('fa-solid');
         deleteIcon.classList.add('fa-trash-can');
         deleteIcon.style.color = 'red';
@@ -147,8 +148,23 @@ const deleteCard = (el) => {
 };
 
 
+Book.prototype.toggleBookStatus = function(){
+    let changedStatus = this.read ? false : true;
+    this.read = changedStatus;
+}
+
+const toggleReadStatus = (el) => {
+    if(el.classList.contains('read')){
+        let bookCardIndex = el.parentNode.getAttribute('data-book');
+        myLibrary[parseInt(bookCardIndex)].toggleBookStatus();
+        displayBooks();
+    }
+}
+
+
 booksContainer.addEventListener('click', (e) => {
     deleteCard(e.target);
+    toggleReadStatus(e.target);
 });
 
 
@@ -158,6 +174,5 @@ if(myLibrary.length > 0){
 
 
 // TODOS
-// TODO 1: Ensure that the readStatus toggle works
-// TODO 2: Add media queries
-// TODO 3: Add local storage
+// TODO 1: Add media queries
+// TODO 2: Add local storage
