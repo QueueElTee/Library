@@ -150,3 +150,25 @@ form .submit input{
 form .submit input:hover{
     transform: scale(1.1);
 }
+
+
+/* Media Queries */
+@media(max-width: 950px){
+    form{
+        width: 80%;
+    }
+}
+
+@media(max-width: 430px){
+    .main-heading, .books{
+        max-width: 95%;
+    }
+
+    h2, h3{
+        font-size: 1.25rem;
+    }
+
+    form{
+        width: 95%;
+    }
+}
