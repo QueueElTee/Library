@@ -1,7 +1,20 @@
+// Gets the books in local storage, converts them to objects and stores it in a variable
+let storedBooks = JSON.parse(localStorage.getItem('books'));
+
+// Adds the 'toggleBookStatus' function to all the book objects again, since it is cut off when the object is converted to a string  using JSON.stringify().
+for(let i = 0; i < storedBooks.length; i++){
+    storedBooks[i].toggleBookStatus = function(){
+        let changedStatus = storedBooks[i].read ? false : true;
+        storedBooks[i].read = changedStatus;
+    }
+}
+
 // The myLibaray array stores all of the book objects
-let myLibrary = [];
+let myLibrary = storedBooks;
+
 // Parent container for the books
 let booksContainer = document.querySelector('.books');
+
 // Stores the length of the library array
 let bookCount = document.querySelector('#book-count');
 
@@ -18,25 +31,21 @@ function Book(title, author, pages, read){
     this.read = read;
 };
 
+// Book object prototype to toggle the read status
+Book.prototype.toggleBookStatus = function(){
+    let changedStatus = this.read ? false : true;
+    this.read = changedStatus;
+}
+
+
 // Adds a book object to the library
 const addBookToLibrary = (book) => {
     myLibrary.push(book)
 };
 
-
-// Manual book objects to test the script
-let book1 = new Book('Harry Potter', 'J.K Rowling', 256, true);
-let book2 = new Book('Things Fall Apart', 'Chinua Achebe', 340, false);
-let book3 = new Book('The Beautiful Ones Are Not Yet Born', 'Kwei Armah', 100, true);
-let book4 = new Book('The Gods Are Not To Blame', 'Ola Rotimi', 568, false);
-let book5 = new Book('Salutation To The Gut', 'Wole Soyinka', 455, true);
-let book6 = new Book('Purple Hibiscus', 'Chimamanda Ngozi Adichie', 95, false);
-let book7 = new Book('Wuthering Heights', 'Emily Bronte', 123, true);
-
-myLibrary.push(book1, book2, book3, book4, book5, book6, book7);
-
 bookCount.textContent = `${myLibrary.length}`;
 
+// Removes any existing book
 const clearBooks = () => {
     let books = document.querySelectorAll('.books .book-card');
     books.forEach(book => booksContainer.removeChild(book));
@@ -53,7 +62,6 @@ const setDataAttr = () => {
 
 // Iterates through the library array and appends each book to the 'booksContainer' DOM element
 const displayBooks = () => {
-    // Removes any existing book
     clearBooks();
 
     // Displays the book objects in the array.
@@ -125,6 +133,8 @@ bookForm.addEventListener('submit', (e) => {
     addBookToLibrary(book);
     bookForm.style.display = 'none';
 
+    localStorage.setItem('books', JSON.stringify(myLibrary));
+
     displayBooks();
     bookCount.textContent = `${myLibrary.length}`;
     setDataAttr();
@@ -144,19 +154,16 @@ const deleteCard = (el) => {
         myLibrary.splice(parseInt(bookCardIndex), 1);
         bookCount.textContent = `${myLibrary.length}`;
         setDataAttr();
+        localStorage.setItem('books', JSON.stringify(myLibrary));
     };
 };
 
-
-Book.prototype.toggleBookStatus = function(){
-    let changedStatus = this.read ? false : true;
-    this.read = changedStatus;
-}
 
 const toggleReadStatus = (el) => {
     if(el.classList.contains('read')){
         let bookCardIndex = el.parentNode.getAttribute('data-book');
         myLibrary[parseInt(bookCardIndex)].toggleBookStatus();
+        localStorage.setItem('books', JSON.stringify(myLibrary));
         displayBooks();
     }
 }
@@ -171,7 +178,3 @@ booksContainer.addEventListener('click', (e) => {
 if(myLibrary.length > 0){
     displayBooks();
 };
-
-
-// TODOS
-// TODO 1: Add local storage
