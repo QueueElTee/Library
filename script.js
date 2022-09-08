@@ -2,10 +2,12 @@
 let storedBooks = JSON.parse(localStorage.getItem('books'));
 
 // Adds the 'toggleBookStatus' function to all the book objects again, since it is cut off when the object is converted to a string  using JSON.stringify().
-for(let i = 0; i < storedBooks.length; i++){
-    storedBooks[i].toggleBookStatus = function(){
-        let changedStatus = storedBooks[i].read ? false : true;
-        storedBooks[i].read = changedStatus;
+if(storedBooks != null){
+    for(let i = 0; i < storedBooks.length; i++){
+        storedBooks[i].toggleBookStatus = function(){
+            let changedStatus = storedBooks[i].read ? false : true;
+            storedBooks[i].read = changedStatus;
+        }
     }
 }
 
