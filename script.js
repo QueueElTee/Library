@@ -67,43 +67,45 @@ const displayBooks = () => {
     clearBooks();
 
     // Displays the book objects in the array.
-    for(let i = 0; i < myLibrary.length; i++){
-        let book = document.createElement('div');
-        book.classList.add('book-card');
-        let title = document.createElement('p');
-        let author = document.createElement('p');
-        let noOfPages = document.createElement('p');
-        let read = document.createElement('p');
-        let readStatus = document.createElement('div');
-        let iconContainer = document.createElement('div');
-        let deleteIcon = document.createElement('i');
+    if(myLibrary != null){
+        for(let i = 0; i < myLibrary.length; i++){
+            let book = document.createElement('div');
+            book.classList.add('book-card');
+            let title = document.createElement('p');
+            let author = document.createElement('p');
+            let noOfPages = document.createElement('p');
+            let read = document.createElement('p');
+            let readStatus = document.createElement('div');
+            let iconContainer = document.createElement('div');
+            let deleteIcon = document.createElement('i');
 
-        title.textContent = `Title: ${myLibrary[i].title}`;
-        author.textContent = `Author: ${myLibrary[i].author}`;
-        noOfPages.textContent = `No Of Pages: ${myLibrary[i].pages}`;
-        read.textContent = `Read: ${myLibrary[i].read}`;
-        readStatus.style.padding = '0.7rem';
-        readStatus.style.textAlign = 'center';
-        readStatus.style.cursor = 'pointer';
-        readStatus.classList.add('read');
-        deleteIcon.classList.add('fa-solid');
-        deleteIcon.classList.add('fa-trash-can');
-        deleteIcon.style.color = 'red';
-        deleteIcon.style.cursor = 'pointer';
-        iconContainer.style.textAlign = 'right';
-        iconContainer.appendChild(deleteIcon);
+            title.textContent = `Title: ${myLibrary[i].title}`;
+            author.textContent = `Author: ${myLibrary[i].author}`;
+            noOfPages.textContent = `No Of Pages: ${myLibrary[i].pages}`;
+            read.textContent = `Read: ${myLibrary[i].read}`;
+            readStatus.style.padding = '0.7rem';
+            readStatus.style.textAlign = 'center';
+            readStatus.style.cursor = 'pointer';
+            readStatus.classList.add('read');
+            deleteIcon.classList.add('fa-solid');
+            deleteIcon.classList.add('fa-trash-can');
+            deleteIcon.style.color = 'red';
+            deleteIcon.style.cursor = 'pointer';
+            iconContainer.style.textAlign = 'right';
+            iconContainer.appendChild(deleteIcon);
 
-        if(myLibrary[i].read == true){
-            readStatus.style.backgroundColor = 'green';
-            readStatus.textContent = 'Read';
-        } else if(myLibrary[i].read == false){
-            readStatus.style.backgroundColor = 'red';
-            readStatus.textContent = 'Not Read Yet';
+            if(myLibrary[i].read == true){
+                readStatus.style.backgroundColor = 'green';
+                readStatus.textContent = 'Read';
+            } else if(myLibrary[i].read == false){
+                readStatus.style.backgroundColor = 'red';
+                readStatus.textContent = 'Not Read Yet';
+            }
+            book.append(title, author, noOfPages, readStatus, iconContainer);
+            booksContainer.appendChild(book);
         }
-        book.append(title, author, noOfPages, readStatus, iconContainer);
-        booksContainer.appendChild(book);
+        setDataAttr();
     }
-    setDataAttr();
 }
 
 
@@ -177,6 +179,6 @@ booksContainer.addEventListener('click', (e) => {
 });
 
 
-if(myLibrary.length > 0){
+if(myLibrary.length != null){
     displayBooks();
 };
