@@ -12,7 +12,8 @@ if(storedBooks != null){
 }
 
 // The myLibaray array stores all of the book objects
-let myLibrary = storedBooks;
+let myLibrary = storedBooks == null ? [] : storedBooks;
+console.log(myLibrary);
 
 // Parent container for the books
 let booksContainer = document.querySelector('.books');
