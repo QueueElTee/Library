@@ -68,7 +68,7 @@ const displayBooks = () => {
     clearBooks();
 
     // Displays the book objects in the array.
-    if(myLibrary != null){
+    // if(myLibrary != null){
         for(let i = 0; i < myLibrary.length; i++){
             let book = document.createElement('div');
             book.classList.add('book-card');
@@ -106,7 +106,7 @@ const displayBooks = () => {
             booksContainer.appendChild(book);
         }
         setDataAttr();
-    }
+    // }
 }
 
 
@@ -180,6 +180,6 @@ booksContainer.addEventListener('click', (e) => {
 });
 
 
-if(myLibrary != null){
+if(myLibrary.length > 0){
     displayBooks();
 };
