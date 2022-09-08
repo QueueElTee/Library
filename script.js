@@ -179,6 +179,6 @@ booksContainer.addEventListener('click', (e) => {
 });
 
 
-if(myLibrary.length != null){
+if(myLibrary != null){
     displayBooks();
 };
