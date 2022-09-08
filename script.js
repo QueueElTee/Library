@@ -45,7 +45,7 @@ const addBookToLibrary = (book) => {
     myLibrary.push(book)
 };
 
-bookCount.textContent = `${myLibrary.length}`;
+bookCount.textContent = `${myLibrary.length <= 0 ? 0 : myLibrary.length}`;
 
 // Removes any existing book
 const clearBooks = () => {
