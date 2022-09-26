@@ -25,19 +25,22 @@ let bookForm = document.querySelector('#book-form');
 let addIcon = document.querySelector('.add-new-book div i');
 let submit = document.querySelector('#submit');
 
-// Book object constructor
-function Book(title, author, pages, read){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+// Book Class
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+
+    // Method to toggle the read status
+    toggleBookStatus() {
+        let changedStatus = this.read ? false : true;
+        this.read = changedStatus;
+    }
 };
 
-// Book object prototype to toggle the read status
-Book.prototype.toggleBookStatus = function(){
-    let changedStatus = this.read ? false : true;
-    this.read = changedStatus;
-}
 
 
 // Adds a book object to the library
